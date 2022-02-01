@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./public/styles/styles.css">
+    <link rel="stylesheet" href="./public/styles/tailwind_build.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true' />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap" rel="stylesheet" />
+    
+    <title>Hotel Manager</title>
+</head>
+
+<body>
+
+    <div class='flex h-screen'>
+
+        <navbar id='navbar' class='bg-gradient-to-tr from-[#0b151a] to-[#153343] w-60 h-full space-y-5 p-5 absolute right-0 shadow-xl shadow-black text-white ease-in-out transition-all duration-300'>
+
+            <button class='absolute left-[-3rem]' onclick=navbarBtn()>
+                <svg class="h-8 w-8 text-[#153343]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+
+            <div class='flex space-x-reverse space-x-36'>
+                <button class='flex items-center'>
+                    <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </button>
+                <button>
+                    <svg class="h-8 w-8"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M4.5 9 h5m-2.5 0v6" />  <path d="M13 15v-6l3 4l3 -4v6" /></svg>
+                </button>
+            </div>
+
+            <div class='text-center'>
+                <button class='flex w-28 m-auto my-5'>
+                    <img class='rounded-full' src="./public/images/profileAvatar.jpg" alt="Profile Avatar">
+                </button>
+
+                <h3 class='font-semibold'>
+                    مصطفی تبریزیان
+                </h3>
+
+                <h5 class='text-zinc-400 text-xs mt-1 font-semibold'>
+                    tabrizian.codes@gmail.com
+                </h5>
+
+            </div>
+
+            <div>
+                <h5 class='text-sky-300 mt-10'>
+                    داشبورد
+                </h5>
+
+                <ul class='space-y-4 mt-5'>
+                    <!-- <li onclick={() => props.setAddUser(prev => prev ? false : true)} class='flex space-x-3 space-x-reverse p-2 rounded-lg hover:bg-slate-700'> -->
+                    <li onclick=fadeInOut(addUser),blurBackground() class='flex space-x-3 space-x-reverse p-2 rounded-lg hover:bg-slate-700'>
+                        <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                        </svg>
+                        <span>
+                            کاربر جدید
+                        </span>
+                    </li>
+                    <li class='flex space-x-3 space-x-reverse p-2 rounded-lg hover:bg-slate-700'>
+                        <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                        </svg>
+                        <span>
+                            لیست کاربران
+                        </span>
+                    </li>
+                    <li class='flex space-x-3 space-x-reverse p-2 rounded-lg hover:bg-slate-700'>
+                        <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />  <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />  <line x1="6" y1="6" x2="6.01" y2="6" />  <line x1="6" y1="18" x2="6.01" y2="18" /></svg>
+                        <span>
+                            سرویس ها
+                        </span>
+                    </li>
+                    <li class='flex space-x-3 space-x-reverse p-2 rounded-lg hover:bg-slate-700'>
+                        <svg class="h-6 w-6"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="13" y="8" width="8" height="12" rx="1" />  <path d="M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9" />  <line x1="16" y1="9" x2="18" y2="9" /></svg>
+                        <span>
+                            دستگاه های متصل 
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </navbar>
+
+
+        <div id='addUser' class='absolute fadeOut left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] border py-5 px-10 rounded-xl shadow-xl bg-white'>
+            <button onclick=fadeInOut(addUser),blurBackground() class='mb-5 relative left-7 bottom-2'>
+                <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+            </button>
+
+
+            <h3 class='font-semibold'>ایجاد کاربر جدید</h3>
+            <form class='space-y-7 mt-10'>
+                <div>
+                    <label htmlFor="userName">نام کاربری:</label>
+                    <input type="text" id="userName" name="userName" class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2' required />
+                </div>
+                <div>
+                    <label htmlFor="userPass">رمز عبور:</label>
+                    <input type="password" id="userPass" name="userPass" class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2' required />
+                </div>
+                <div>
+                    <label htmlFor="userPhoneNum">تلفن همراه:</label>
+                    <input type="number" id="userPhoneNum" name="userPhoneNum" class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2' required />
+                </div>
+                <div>
+                    <label htmlFor="serviceType">نوع سرویس:</label>
+                    <select name="serviceType" id="serviceType" class='mx-5 pr-4'>
+                        <option value="type1">نوع ۱</option>
+                        <option value="type2">۲ نوع</option>
+                        <option value="type3">۳ نوع</option>
+                        <option value="type4">۴ نوع</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="serviceExpire">اعتبار زمانی:</label>
+                    <input type="time" id="serviceExpire" name="serviceExpire" max="24:00" class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2' required />
+                    <input type="number" id="serviceExpire" name="serviceExpire" class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2 w-16' required />
+                    <span>روز</span>
+                </div>
+
+                <div>
+                    <label htmlFor="downloadLimit">محدودیت دانلود:</label>
+                    <input type="number" id="downloadLimit" name="downloadLimit" class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2 w-28' required />
+                    <span>مگابیت</span>
+                </div>
+                
+                <div>
+                    <label htmlFor="uploadLimit">محدودیت آپلود:</label>
+                    <input type="number" id="uploadLimit" name="uploadLimit" class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2 w-28' required />
+                    <span>مگابیت</span>
+                </div>
+
+                <div>
+                    <label htmlFor="downloadUploadLimit">محدودیت دانلود و آپلود:</label>
+                    <input type="number" id="downloadUploadLimit" name="downloadUploadLimit" class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2 w-28' required />
+                    <span>مگابیت</span>
+                </div>
+
+                <div class='flex justify-end'>
+                    <button class='bg-green-700 px-3 py-1 text-white rounded-xl flex'>
+                        <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <polyline points="20 6 9 17 4 12" /></svg>
+                        <span>تایید</span>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+        <div id='main' class='mr-64 mt-16 transition-all duration-300'>
+            <h1>لیست کاربران</h1>
+            <div>
+                <table class='mt-5 transition-all duration-300' id='userTable'>
+                    <tr class='text-white text-md bg-gradient-to-tr from-[#0b151a] to-[#153343]'>
+                        <th class='p-5'>آی دی</th>
+                        <th class='p-5'>مرکز</th>
+                        <th class='p-5'>نام کاربر</th>
+                        <th class='p-5'>کد ملی</th>
+                        <th class='p-5'>نام و نام خانوادگی</th>
+                        <th class='p-5'>نام سرویس</th>
+                        <th class='p-5'>شروع سرویس</th>
+                        <th class='p-5'>پایان سرویس</th>
+                        <th class='p-5'>تعداد کاربران</th>
+                        <th class='p-5'>تعداد پیامک</th>
+                        <th class='p-5'>کنترل</th>
+                    </tr>
+                    <tr class='odd:bg-white even:bg-slate-200'>
+                        <td class='px-5 py-4 text-center'>1</td>
+                        <td class='px-5 py-4 text-center'>هتل ژوسف</td>
+                        <td class='px-5 py-4 text-center'>AlexanderJosef</td>
+                        <td class='px-5 py-4 text-center'>0372273076</td>
+                        <td class='px-5 py-4 text-center'>مصطفی تبریزیان</td>
+                        <td class='px-5 py-4 text-center'>وی آی پی</td>
+                        <td class='px-5 py-4 text-center'>1401_10_10</td>
+                        <td class='px-5 py-4 text-center'>1402_10_10</td>
+                        <td class='px-5 py-4 text-center'>58</td>
+                        <td class='px-5 py-4 text-center'>3</td>
+                        <td class='px-5 py-4 text-center space-y-2'>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-5 w-5 text-red-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>                            </button>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-4 w-4 text-sky-800" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class='odd:bg-white even:bg-slate-200'>
+                        <td class='px-5 py-4 text-center'>2</td>
+                        <td class='px-5 py-4 text-center'>هتل ساندر</td>
+                        <td class='px-5 py-4 text-center'>MostafaT19</td>
+                        <td class='px-5 py-4 text-center'>0372456776</td>
+                        <td class='px-5 py-4 text-center'>مصطفی تبریزیان</td>
+                        <td class='px-5 py-4 text-center'>معمولی</td>
+                        <td class='px-5 py-4 text-center'>1401_11_28</td>
+                        <td class='px-5 py-4 text-center'>1401_12_20</td>
+                        <td class='px-5 py-4 text-center'>5</td>
+                        <td class='px-5 py-4 text-center'>10</td>
+                        <td class='px-5 py-4 text-center space-y-2 text-lg'>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-5 w-5 text-red-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                            </button>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-4 w-4 text-sky-800" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class='odd:bg-white even:bg-slate-200'>
+                        <td class='px-5 py-4 text-center'>3</td>
+                        <td class='px-5 py-4 text-center'>هتل ساندر</td>
+                        <td class='px-5 py-4 text-center'>MostafaT19</td>
+                        <td class='px-5 py-4 text-center'>0372456776</td>
+                        <td class='px-5 py-4 text-center'>مصطفی تبریزیان</td>
+                        <td class='px-5 py-4 text-center'>معمولی</td>
+                        <td class='px-5 py-4 text-center'>1401_11_28</td>
+                        <td class='px-5 py-4 text-center'>1401_12_20</td>
+                        <td class='px-5 py-4 text-center'>5</td>
+                        <td class='px-5 py-4 text-center'>10</td>
+                        <td class='px-5 py-4 text-center space-y-2 text-lg'>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-5 w-5 text-red-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                            </button>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-4 w-4 text-sky-800" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class='odd:bg-white even:bg-slate-200'>
+                        <td class='px-5 py-4 text-center'>4</td>
+                        <td class='px-5 py-4 text-center'>هتل ساندر</td>
+                        <td class='px-5 py-4 text-center'>MostafaT19</td>
+                        <td class='px-5 py-4 text-center'>0372456776</td>
+                        <td class='px-5 py-4 text-center'>مصطفی تبریزیان</td>
+                        <td class='px-5 py-4 text-center'>معمولی</td>
+                        <td class='px-5 py-4 text-center'>1401_11_28</td>
+                        <td class='px-5 py-4 text-center'>1401_12_20</td>
+                        <td class='px-5 py-4 text-center'>5</td>
+                        <td class='px-5 py-4 text-center'>10</td>
+                        <td class='px-5 py-4 text-center space-y-2 text-lg'>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-5 w-5 text-red-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                            </button>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-4 w-4 text-sky-800" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class='odd:bg-white even:bg-slate-200'>
+                        <td class='px-5 py-4 text-center'>5</td>
+                        <td class='px-5 py-4 text-center'>هتل ساندر</td>
+                        <td class='px-5 py-4 text-center'>MostafaT19</td>
+                        <td class='px-5 py-4 text-center'>0372456776</td>
+                        <td class='px-5 py-4 text-center'>مصطفی تبریزیان</td>
+                        <td class='px-5 py-4 text-center'>معمولی</td>
+                        <td class='px-5 py-4 text-center'>1401_11_28</td>
+                        <td class='px-5 py-4 text-center'>1401_12_20</td>
+                        <td class='px-5 py-4 text-center'>5</td>
+                        <td class='px-5 py-4 text-center'>10</td>
+                        <td class='px-5 py-4 text-center space-y-2 text-lg'>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-5 w-5 text-red-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                            </button>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-4 w-4 text-sky-800" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class='odd:bg-white even:bg-slate-200'>
+                        <td class='px-5 py-4 text-center'>6</td>
+                        <td class='px-5 py-4 text-center'>هتل ساندر</td>
+                        <td class='px-5 py-4 text-center'>MostafaT19</td>
+                        <td class='px-5 py-4 text-center'>0372456776</td>
+                        <td class='px-5 py-4 text-center'>مصطفی تبریزیان</td>
+                        <td class='px-5 py-4 text-center'>معمولی</td>
+                        <td class='px-5 py-4 text-center'>1401_11_28</td>
+                        <td class='px-5 py-4 text-center'>1401_12_20</td>
+                        <td class='px-5 py-4 text-center'>5</td>
+                        <td class='px-5 py-4 text-center'>10</td>
+                        <td class='px-5 py-4 text-center space-y-2 text-lg'>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-5 w-5 text-red-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                            </button>
+                            <button class='flex space-x-1 space-x-reverse'>
+                                <svg class="h-4 w-4 text-sky-800" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>
