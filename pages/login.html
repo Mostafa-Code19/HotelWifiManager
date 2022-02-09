@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/public/styles/styles.css">
+    <link rel="stylesheet" href="/public/styles/tailwind_build.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true' />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap" rel="stylesheet" />
+
+    <title>Hotel Manager</title>
+</head>
+
+<body class="login">
+    
+    <div class="bg-red-500 ">
+        <h1 class="text-center">ورود</h1>
+        <form class='mt-10 space-y-7'>
+            <div>
+                <input type="text" placeholder="نام کاربری" id="userName" name="userName"
+                    class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2' required />
+            </div>
+            <div>
+                <input type="password" id="userPass" name="userPass" placeholder="رمز عبور"
+                    class='shadow-xl shadow-[#5f5f5f19] rounded border border-[#00000024] mx-5 px-2' required />
+            </div>
+            <div class="flex">
+                <div class='flex mx-5'>
+                    <button class='flex px-3 py-1 text-white bg-green-700 rounded-xl'>
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                            strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        <span>تایید</span>
+                    </button>
+                </div>
+                <div class='flex'>
+                    <button class='flex px-3 py-1 text-white bg-green-700 rounded-xl'>
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                            strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        <span>اتصال به روتر</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="/js/index.js"></script>
+
+</body>
+
+</html>

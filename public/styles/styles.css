@@ -37,6 +37,12 @@ body {
   font-family: 'Baloo Bhaijaan 2', cursive;
 }
 
+.login {
+  background: url("/public/images/login.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 li:hover {
   cursor: pointer;
 }
